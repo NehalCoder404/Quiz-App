@@ -60,6 +60,9 @@ const quizQuestions =
 
 let questionEle = document.getElementById('questionEle')
 let optionEle = document.getElementById('optionEle')
+var nextQusBtn = document.getElementById('nextQusBtn')
+
+var allLi = optionEle.getElementsByTagName('li')
 var counter = 0;
 
 function startApp() {
@@ -85,6 +88,7 @@ function nextQuestion() {
     console.log('nextQuestion', counter);
     startApp()
 
+    nextQusBtn.setAttribute('disabled',true)
 }
 
 
@@ -94,13 +98,49 @@ function checkAns(li) {
 
     userAns = li.innerHTML
 
+    // console.log(li);
     // console.log(userAns);
     // console.log(correctAns);
 
     if (userAns === correctAns) {
-        console.log('ture jawab');
+        console.log('ture jawab')
+        li.style.background = 'green';
     }
-    else { console.log('galat jawab');
-     }
+    else {
+        console.log('galat jawab');
+        li.style.background = 'red';
+
+
+        // console.log(optionEle);
+
+
+        // for (var i = 0; i < allLi.length; i++) {
+        //     // console.log(allLi[i].innerHTML);
+
+        //     if (allLi[i].innerHTML === correctAns) {
+        //         allLi[i].style.background = "green";
+        //         break
+        //     }
+
+        // }
+
+        for (var value of allLi) {
+            // console.log(value.innerHTML);
+
+            if (value.innerHTML === correctAns) {
+                value.style.background = "green";
+
+            }
+
+        }
+
+    }
+
+    for (var value of allLi) {
+        value.style.pointerEvents = 'none'
+    }
+
+    nextQusBtn.removeAttribute('disabled')
+
 
 }
