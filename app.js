@@ -29,41 +29,48 @@ const quizQuestions =
             options: ["var", "let", "const", "All of the above"],
             correctAnswer: "All of the above"
         },
-        {
-            question: "What does CSS stand for?",
-            options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets",
-                "Colorful Style Sheets"],
-            correctAnswer: "Cascading Style Sheets"
-        },
-        {
-            question: "Which method is used to print something in the browser console?",
-            options: ["console.print()", "log.console()", "console.log()",
-                "print.console()"],
-            correctAnswer: "console.log()"
-        },
-        {
-            question: "Which HTML element is used for the largest heading?",
-            options: ["heading", "h6", "h1", "head"],
-            correctAnswer: "h1"
-        },
-        {
-            question: "How do you write a comment in JavaScript?",
-            options: [`!-- comment --`, "// comment", "/* comment */", "Both // and /* */"],
-            correctAnswer: "Both // and /* */"
-        },
-        {
-            question: "Which CSS property is used to change the background color?",
-            options: ["color", "bgcolor", "background-color", "background-style"],
-            correctAnswer: "background-color"
-        }
+        // {
+        //     question: "What does CSS stand for?",
+        //     options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets",
+        //         "Colorful Style Sheets"],
+        //     correctAnswer: "Cascading Style Sheets"
+        // },
+        // {
+        //     question: "Which method is used to print something in the browser console?",
+        //     options: ["console.print()", "log.console()", "console.log()",
+        //         "print.console()"],
+        //     correctAnswer: "console.log()"
+        // },
+        // {
+        //     question: "Which HTML element is used for the largest heading?",
+        //     options: ["heading", "h6", "h1", "head"],
+        //     correctAnswer: "h1"
+        // },
+        // {
+        //     question: "How do you write a comment in JavaScript?",
+        //     options: [`!-- comment --`, "// comment", "/* comment */", "Both // and /* */"],
+        //     correctAnswer: "Both // and /* */"
+        // },
+        // {
+        //     question: "Which CSS property is used to change the background color?",
+        //     options: ["color", "bgcolor", "background-color", "background-style"],
+        //     correctAnswer: "background-color"
+        // }
     ];
 
 let questionEle = document.getElementById('questionEle')
 let optionEle = document.getElementById('optionEle')
 var nextQusBtn = document.getElementById('nextQusBtn')
+var quizContainer = document.getElementsByClassName('quizContainer')
+var reportCardContainer = document.getElementsByClassName('reportCardContainer')
 
 var allLi = optionEle.getElementsByTagName('li')
+var QusTotal = document.getElementById('QusTotal')
 var counter = 0;
+var score = 0;
+
+QusTotal.innerHTML = `${counter + 1} / ${quizQuestions.length}`
+
 
 function startApp() {
     // console.log('ruing',quizQuestions[0].options);
@@ -85,10 +92,21 @@ function startApp() {
 
 function nextQuestion() {
     counter++
-    console.log('nextQuestion', counter);
-    startApp()
+    // console.log('nextQuestion', counter);
+    if (counter < quizQuestions.length) {
+        startApp()
+    } else {
+        console.log('khatam quiz tata');
+        console.log(quizContainer);
+        
+        quizContainer[0].style.display = 'none'
+        reportCardContainer[0].style.display = 'block'
+        console.log('correct ans', score);
+        console.log('wrong ans', quizQuestions.length - score);
+    }
 
-    nextQusBtn.setAttribute('disabled',true)
+    QusTotal.innerHTML = `${counter + 1} / ${quizQuestions.length}`
+    nextQusBtn.setAttribute('disabled', true)
 }
 
 
@@ -103,11 +121,13 @@ function checkAns(li) {
     // console.log(correctAns);
 
     if (userAns === correctAns) {
-        console.log('ture jawab')
+        // console.log('ture jawab')
         li.style.background = 'green';
+        score++
+
     }
     else {
-        console.log('galat jawab');
+        // console.log('galat jawab');
         li.style.background = 'red';
 
 
