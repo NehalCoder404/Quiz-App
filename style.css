@@ -38,7 +38,7 @@ ul li {
     color: black;
     background-color: white;
     margin: 10px 0;
-    padding: 10px 15px;
+    padding: 15px 15px;
     transition: 0.3s ease-out;
     border-radius: 20px;
 }
@@ -138,4 +138,18 @@ ul li:hover {
     color: red;
 }
 
+
+@media screen and (min-width:200px) and (max-width:575px) {
+
+    
+.quizContainer {
+    width: 350px;
+    margin: 100px 0;
+}
+
+ul li {
+    padding: 13px 12px;
+}
+
+}
 
