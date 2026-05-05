@@ -129,3 +129,13 @@ ul li:hover {
     margin: 5px 0;
     margin-bottom: 10px;
 }
+
+#correctAnsEle{
+    color: green;
+}
+
+#wrongAnsEle{
+    color: red;
+}
+
+

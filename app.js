@@ -29,33 +29,33 @@ const quizQuestions =
             options: ["var", "let", "const", "All of the above"],
             correctAnswer: "All of the above"
         },
-        // {
-        //     question: "What does CSS stand for?",
-        //     options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets",
-        //         "Colorful Style Sheets"],
-        //     correctAnswer: "Cascading Style Sheets"
-        // },
-        // {
-        //     question: "Which method is used to print something in the browser console?",
-        //     options: ["console.print()", "log.console()", "console.log()",
-        //         "print.console()"],
-        //     correctAnswer: "console.log()"
-        // },
-        // {
-        //     question: "Which HTML element is used for the largest heading?",
-        //     options: ["heading", "h6", "h1", "head"],
-        //     correctAnswer: "h1"
-        // },
-        // {
-        //     question: "How do you write a comment in JavaScript?",
-        //     options: [`!-- comment --`, "// comment", "/* comment */", "Both // and /* */"],
-        //     correctAnswer: "Both // and /* */"
-        // },
-        // {
-        //     question: "Which CSS property is used to change the background color?",
-        //     options: ["color", "bgcolor", "background-color", "background-style"],
-        //     correctAnswer: "background-color"
-        // }
+        {
+            question: "What does CSS stand for?",
+            options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets",
+                "Colorful Style Sheets"],
+            correctAnswer: "Cascading Style Sheets"
+        },
+        {
+            question: "Which method is used to print something in the browser console?",
+            options: ["console.print()", "log.console()", "console.log()",
+                "print.console()"],
+            correctAnswer: "console.log()"
+        },
+        {
+            question: "Which HTML element is used for the largest heading?",
+            options: ["heading", "h6", "h1", "head"],
+            correctAnswer: "h1"
+        },
+        {
+            question: "How do you write a comment in JavaScript?",
+            options: [`!-- comment --`, "// comment", "/* comment */", "Both // and /* */"],
+            correctAnswer: "Both // and /* */"
+        },
+        {
+            question: "Which CSS property is used to change the background color?",
+            options: ["color", "bgcolor", "background-color", "background-style"],
+            correctAnswer: "background-color"
+        }
     ];
 
 let questionEle = document.getElementById('questionEle')
@@ -96,13 +96,34 @@ function nextQuestion() {
     if (counter < quizQuestions.length) {
         startApp()
     } else {
-        console.log('khatam quiz tata');
-        console.log(quizContainer);
-        
+        // console.log('khatam quiz tata');
+        // console.log(quizContainer);
+
         quizContainer[0].style.display = 'none'
         reportCardContainer[0].style.display = 'block'
-        console.log('correct ans', score);
-        console.log('wrong ans', quizQuestions.length - score);
+
+        let correctAnsEle = document.getElementById('correctAnsEle')
+        let wrongAnsEle = document.getElementById('wrongAnsEle')
+        let gradEle = document.getElementById('gradEle')
+
+        correctAnsEle.innerHTML = score
+        wrongAnsEle.innerHTML = quizQuestions.length - score
+
+        // console.log(correctAnsEle);
+        // console.log(score);
+        
+
+        if(score < 5){
+            // console.log('fail');
+            gradEle.innerHTML = 'Fail'
+        }else{
+            gradEle.innerHTML = 'Pass'
+            // console.log('pass');
+            
+        }
+
+        // console.log('correct ans', score);
+        // console.log('wrong ans', quizQuestions.length - score);
     }
 
     QusTotal.innerHTML = `${counter + 1} / ${quizQuestions.length}`
