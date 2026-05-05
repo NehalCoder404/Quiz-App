@@ -151,5 +151,12 @@ ul li {
     padding: 13px 12px;
 }
 
+
+.reportCardContainer {
+    background-color: white;
+    width: 350px;
+    margin: 120px auto;
+}
+
 }
 
