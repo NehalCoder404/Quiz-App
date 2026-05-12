@@ -1,1 +1,1 @@
-Quiz Application URL: https://nehalcoder404-quiz-application.netlify.app/
+Quiz Application URL: https://nehalcoder200-quiz-application.netlify.app/
